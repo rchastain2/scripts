@@ -1,2 +1,4 @@
-# scripts
-Bash and Lua scripts
+# Scripts
+
+Various Bash and Lua scripts.
+
