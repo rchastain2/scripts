@@ -105,7 +105,7 @@ EOF
   cp -f $FILE $DESKTOP
   
   # https://forum.xfce.org/viewtopic.php?id=16357
-  f=$DESKTOP/$FILE; gio set -t string $f metadata::xfce-exe-checksum "$(sha256sum $f | awk '{print $1}')"
+  #f=$DESKTOP/$FILE; gio set -t string $f metadata::xfce-exe-checksum "$(sha256sum $f | awk '{print $1}')"
   
   if [ ! -d $APPMENU_DIR ]; then
     echo "[INFO] Create directory: $APPMENU_DIR"
