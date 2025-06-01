@@ -37,7 +37,7 @@ configure()
   fi
   
   TIMESTAMP=$(date +"%y%m%d%H%M")
-  INSTALL_NAME="mseide-$TIMESTAMP"
+  INSTALL_NAME="mseide-$BRANCH-$TIMESTAMP"
   MSEDIR="$INSTALL_DIR/$INSTALL_NAME"
   
   APPMENU_DIR="$HOME/.local/share/applications"
@@ -89,7 +89,7 @@ install()
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=MSEide ($BRANCH, $TIMESTAMP) 
+Name=MSEide $BRANCH $TIMESTAMP 
 Comment=Pascal IDE
 Exec=$MSEDIR/apps/ide/mseide --globstatfile=$MSEDIR/apps/ide/mseide.sta %F
 Icon=$MSEDIR/msegui_64.png
