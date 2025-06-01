@@ -1,16 +1,4 @@
 
-## install_mseide.sh
-## Télécharge, compile et installe (1) MSEide sous Linux.
-
-## (1) L'installation consiste dans la création de deux raccourcis : l'un sur le
-## bureau, l'autre dans le menu des applications.
-
-## Exemple d'utilisation :
-## sh install_mseide.sh -d ~/Applications -b maint &> install_mseide.log
-
-## Au premier lancement de MSEide, vous devez aller dans Settings/Configure MSEide
-## et renseigner la variable MSEDIR.
-
 check_available()
 {
   COMMAND="$1"
@@ -154,3 +142,9 @@ configure $INSTALL_DIR $BRANCH
 download
 build
 install
+
+echo "[INFO] Installation successful."
+echo "[INFO] Don't forget to configure MSEide!"
+echo "[INFO] In MSEide menu, click on 'Settings/Configure MSEide', and assign the following value to MSEDIR variable:"
+printf "[INFO] MSEDIR=%s" "$MSEDIR"
+
