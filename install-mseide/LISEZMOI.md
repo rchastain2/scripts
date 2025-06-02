@@ -28,7 +28,8 @@ sh install_mseide.sh -b maint
 Par défaut, le script installe la branche *main* du [dépôt maintenu par Fred van Stappen](https://codeberg.org/fredvs/mseide-msegui.git).
 
 Le seul autre choix disponible dans la version initiale du script est la branche *maint* (pour maintenance) du [dépôt maintenu par moi](https://codeberg.org/rchastain/mseide-msegui). Cette branche contient le projet dans l'état où Martin Schreiber l'a laissé, avec seulement les modifications nécessaires pour la compatibilité avec Free Pascal 3.2 ; alors que la branche maintenue par Fred contient d'autres corrections, des nouveautés (par exemple la possibilité d'utiliser *BGRABitmap) et une compatibilité avec Free Pascal 3.3.
-
+<!--
 ## Configuration de MSEide
 
 Au premier lancement de MSEide, vous devez aller dans **Settings/Configure MSEide** et renseigner la variable *MSEDIR*.
+-->

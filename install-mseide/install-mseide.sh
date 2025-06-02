@@ -83,15 +83,16 @@ install()
 {
   echo "[INFO] Create shortcuts"
   
-  FILE=$INSTALL_NAME.desktop
+  DESKTOPFILE=$INSTALL_NAME.desktop
+  STATFILE=$MSEDIR/apps/ide/mseide.sta
   
-  cat > $FILE << EOF
+  cat > $DESKTOPFILE << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=MSEide $BRANCH $TIMESTAMP 
 Comment=Pascal IDE
-Exec=$MSEDIR/apps/ide/mseide --globstatfile=$MSEDIR/apps/ide/mseide.sta %F
+Exec=$MSEDIR/apps/ide/mseide --globstatfile=$STATFILE %F
 Icon=$MSEDIR/msegui_64.png
 Path=$MSEDIR/apps/ide
 Terminal=false
@@ -100,23 +101,34 @@ Categories=Application;IDE;Development;GUIDesigner;Programming;
 Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;
 EOF
   
-  #sudo chmod -R 777 $FILE
-  chmod -R 777 $FILE
-  cp -f $FILE $DESKTOP
+  chmod -R 777 $DESKTOPFILE
+  cp -f $DESKTOPFILE $DESKTOP
   
-  # https://forum.xfce.org/viewtopic.php?id=16357
-  #f=$DESKTOP/$FILE; gio set -t string $f metadata::xfce-exe-checksum "$(sha256sum $f | awk '{print $1}')"
+  if [[ $DESKTOP_SESSION = "xfce" ]]
+  then
+    "[INFO] Xfce desktop detected"
+    # https://forum.xfce.org/viewtopic.php?id=16357
+    FILE=$DESKTOP/$DESKTOPFILE
+    gio set -t string $FILE metadata::xfce-exe-checksum "$(sha256sum $FILE | awk '{print $1}')"
+  fi
   
   if [ ! -d $APPMENU_DIR ]; then
     echo "[INFO] Create directory: $APPMENU_DIR"
     mkdir -p $APPMENU_DIR
   fi
-  mv -f $FILE $APPMENU_DIR
+  mv -f $DESKTOPFILE $APPMENU_DIR
+  
+  cat > $STATFILE << EOF
+[mainfo.mainstatfile]
+fpcdir=
+fpclibdir=
+msedir=$MSEDIR/
+EOF
 }
 
 # ==============================================================================
 
-echo "MSEide Installer"
+echo "MSEide Bash Installer"
 
 # Checks commands availability
 check_command_availability git
@@ -142,7 +154,4 @@ download
 build
 install
 
-echo "[INFO] Installation successful."
-echo "[INFO] Don't forget to configure MSEide!"
-echo "[INFO] In MSEide menu, click on 'Settings/Configure MSEide', and assign the following value to MSEDIR variable:"
-printf "[INFO] MSEDIR=%s" "$MSEDIR"
+echo "[INFO] Installation successful"
