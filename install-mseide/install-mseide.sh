@@ -1,5 +1,5 @@
 
-check_available()
+check_command_availability()
 {
   COMMAND="$1"
   if ! command -v $COMMAND 2>&1 >/dev/null; then
@@ -15,7 +15,7 @@ configure()
   
   case $BRANCH in
     main)
-      URL="https://codeberg.org/fredvs/mseide-msegui.git"
+      URL="https://codeberg.org/mse-org/mseide-msegui.git"
       ;;
     maint)
       URL="https://codeberg.org/rchastain/mseide-msegui.git"
@@ -119,9 +119,8 @@ EOF
 echo "MSEide Installer"
 
 # Checks commands availability
-check_available git
-check_available fpc
-#check_available sudo
+check_command_availability git
+check_command_availability fpc
 
 # Default installation directory (current directory)
 INSTALL_DIR="$PWD"
@@ -147,4 +146,3 @@ echo "[INFO] Installation successful."
 echo "[INFO] Don't forget to configure MSEide!"
 echo "[INFO] In MSEide menu, click on 'Settings/Configure MSEide', and assign the following value to MSEDIR variable:"
 printf "[INFO] MSEDIR=%s" "$MSEDIR"
-
