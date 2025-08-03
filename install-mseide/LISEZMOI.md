@@ -8,13 +8,13 @@ Les fichiers téléchargés restent où ils sont. Le dépôt git est cloné dans
 ## Utilisation
 
 ```bash
-sh install_mseide.sh
+sh install-mseide.sh
 ```
 
 L'option **-d** permet de choisir l'emplacement de l'installation (l'endroit où sera cloné le dépôt git).
 
 ```bash
-sh install_mseide.sh -d ~/Applications
+sh install-mseide.sh -d ~/Applications
 ```
 
 Par défaut le dossier est créé dans le répertoire courant.
@@ -22,7 +22,7 @@ Par défaut le dossier est créé dans le répertoire courant.
 L'option **-b** permet de choisir une branche.
 
 ```bash
-sh install_mseide.sh -b maint
+sh install-mseide.sh -b maint
 ```
 
 Par défaut, le script installe la branche *main* du [dépôt maintenu par Fred van Stappen](https://codeberg.org/fredvs/mseide-msegui.git).
