@@ -1,4 +1,14 @@
 
+# install-mseide.sh
+# MSEide Bash Installer
+
+# - Clones MSEide+MSEgui repository,
+# - compiles MSEide
+# - and creates shortcuts. 
+
+# Usage:
+#   sh install-mseide.sh [-d DIR] [-b BRANCH]
+
 check_command_availability()
 {
   COMMAND="$1"
@@ -136,6 +146,7 @@ check_command_availability fpc
 
 # Default installation directory (current directory)
 INSTALL_DIR="$PWD"
+
 # Default branch
 BRANCH=main
 
