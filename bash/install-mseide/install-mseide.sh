@@ -8,6 +8,9 @@
 
 # Usage:
 #   sh install-mseide.sh [-d DIR] [-b BRANCH]
+#
+# Example:
+#   sh install-mseide.sh -d ~/Applications
 
 check_command_availability()
 {
@@ -114,26 +117,13 @@ EOF
   chmod -R 777 $DESKTOPFILE
   cp -f $DESKTOPFILE $DESKTOP
   
-  if [[ $DESKTOP_SESSION = "xfce" ]]
-  then
-    "[INFO] Xfce desktop detected"
-    # https://forum.xfce.org/viewtopic.php?id=16357
-    FILE=$DESKTOP/$DESKTOPFILE
-    gio set -t string $FILE metadata::xfce-exe-checksum "$(sha256sum $FILE | awk '{print $1}')"
-  fi
-  
   if [ ! -d $APPMENU_DIR ]; then
     echo "[INFO] Create directory: $APPMENU_DIR"
     mkdir -p $APPMENU_DIR
   fi
   mv -f $DESKTOPFILE $APPMENU_DIR
   
-  cat > $STATFILE << EOF
-[mainfo.mainstatfile]
-fpcdir=
-fpclibdir=
-msedir=$MSEDIR/
-EOF
+  $MSEDIR/apps/ide/mseide --macrodef=MSEDIR,$MSEDIR --storeglobalmacros --globstatfile=$STATFILE
 }
 
 # ==============================================================================
@@ -166,3 +156,14 @@ build
 install
 
 echo "[INFO] Installation successful"
+
+exit 0
+
+# ==============================================================================
+
+  cat > $STATFILE << EOF
+[mainfo.mainstatfile]
+fpcdir=
+fpclibdir=
+msedir=$MSEDIR/
+EOF
