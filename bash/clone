@@ -1,0 +1,28 @@
+
+printf "[INFO] BASH_SOURCE $BASH_SOURCE\n"
+
+if [ ! -z "$1" ]
+then
+  URL="$1"
+  printf "[DEBUG] URL \"%s\"\n" "$URL"
+  
+  echo git clone --single-branch --depth 1 "$URL"  "$2"
+  
+  BASENAME=$(basename $URL)
+  printf "[DEBUG] BASENAME \"%s\"\n" "$BASENAME"
+  
+  if [ ! -z "$2" ]
+  then
+    FILENAME="$2"
+  else
+    FILENAME=${BASENAME%.*}
+  fi
+  printf "[DEBUG] FILENAME \"%s\"\n" "$FILENAME"
+  
+  if [ ! -z "$FILENAME" ]
+  then
+    echo mv -v $FILENAME/.git/config url.txt
+    echo rm -rf $FILENAME/.git
+    echo rm -rf $FILENAME/.github
+  fi
+fi
