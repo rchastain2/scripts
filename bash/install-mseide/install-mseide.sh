@@ -72,7 +72,7 @@ download()
   if [ -d "$MSEDIR" ]; then
     echo "[INFO] Directory already exists: $MSEDIR"
   else
-    git clone --single-branch --branch $BRANCH $URL $MSEDIR 
+    git clone --single-branch --depth 1 --branch $BRANCH $URL $MSEDIR 
   fi
 }
 
@@ -123,7 +123,7 @@ EOF
   fi
   mv -f $DESKTOPFILE $APPMENU_DIR
   
-  $MSEDIR/apps/ide/mseide --macrodef=MSEDIR,$MSEDIR --storeglobalmacros --globstatfile=$STATFILE
+  $MSEDIR/apps/ide/mseide --macrodef=MSEDIR,$MSEDIR/ --storeglobalmacros --globstatfile=$STATFILE
 }
 
 # ==============================================================================
