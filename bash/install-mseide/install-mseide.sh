@@ -9,8 +9,9 @@
 # Usage:
 #   sh install-mseide.sh [-d DIR] [-b BRANCH]
 #
-# Example:
+# Examples:
 #   sh install-mseide.sh -d ~/Applications
+#   sh install-mseide.sh -d ~/Applications -b main
 
 check_command_availability()
 {
