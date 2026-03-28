@@ -7,12 +7,12 @@ L'installation comprend les opérations suivantes :
 
 - Cloner le dépôt *git* de *MSEide+MSEgui*
 - Compiler *MSEide*
-- Crée un raccourci sur le bureau et un autre dans le menu des applications
+- Créer un raccourci sur le bureau et un autre dans le menu des applications
 - Lancer une première fois *MSEide* pour le configurer
 
 Le dépôt *git* est cloné dans un dossier avec un nom unique.
 
-Les raccourcis contiennent une option obligeant *MSEide* à utiliser son propre fichier de configuration (nommé *mseide.sta* et contenu dans le même dossier que l'exécutable).
+Les raccourcis contiennent une option obligeant *MSEide* à utiliser son propre fichier de configuration (nommé *mseide.sta* et se trouvant dans le même dossier que l'exécutable).
 
 ## Utilisation
 
