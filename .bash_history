@@ -1,1 +1,1 @@
-cd ..
+rm -fv .bash_history
