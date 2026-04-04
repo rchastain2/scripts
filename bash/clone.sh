@@ -1,4 +1,13 @@
 
+## clone.sh
+##
+## Clone un dépôt Git,
+## supprime le dossier .git,
+## sauvegarde l'URL dans un fichier nommé url.txt.
+##
+## Usage :
+##   sh clone.sh URL [DIRNAME]
+
 printf "[INFO] BASH_SOURCE $BASH_SOURCE\n"
 
 if [ ! -z "$1" ]
@@ -6,7 +15,7 @@ then
   URL="$1"
   printf "[DEBUG] URL \"%s\"\n" "$URL"
   
-  echo git clone --single-branch --depth 1 "$URL"  "$2"
+  git clone --single-branch --depth 1 $URL $2
   
   BASENAME=$(basename $URL)
   printf "[DEBUG] BASENAME \"%s\"\n" "$BASENAME"
@@ -21,8 +30,8 @@ then
   
   if [ ! -z "$FILENAME" ]
   then
-    echo mv -v $FILENAME/.git/config url.txt
-    echo rm -rf $FILENAME/.git
-    echo rm -rf $FILENAME/.github
+    sed -n 's/^	url = //p' $FILENAME/.git/config > $FILENAME/url.txt
+    rm -rf $FILENAME/.git
+    rm -rf $FILENAME/.github
   fi
 fi

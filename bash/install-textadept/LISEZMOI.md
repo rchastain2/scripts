@@ -1,9 +1,9 @@
 
 # Script pour l'installation de TextAdept sous Linux
 
-Script Bash qui télécharge *TextAdept* à partir du dépôt git, le compile et crée deux raccourcis : l'un sur le bureau, l'autre dans le menu des applications.
+Script Bash qui télécharge [TextAdept](https://github.com/orbitalquark/textadept) à partir du dépôt *git*, le compile et crée deux raccourcis : l'un sur le bureau, l'autre dans le menu des applications.
 
-Les fichiers téléchargés restent où ils sont. Le dépôt git est cloné dans un dossier avec un nom unique.
+Les fichiers téléchargés restent où ils sont. Le dépôt *git* est cloné dans un dossier avec un nom unique.
 
 ## Utilisation
 

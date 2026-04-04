@@ -1,11 +1,11 @@
 
 # TextAdept Bash installer
 
-Bash script for installing *TextAdept* under Linux.
+Bash script for installing [TextAdept](https://github.com/orbitalquark/textadept) under Linux.
 
 Clones *TextAdept* repository, builds the application and creates two shortcuts: one on the desktop, the other in the applications menu.
 
-The downloaded files stay where they are. The git repository is cloned in a folder with a timestamp in its name.
+The downloaded files stay where they are. The *git* repository is cloned in a folder with a timestamp in its name.
 
 ## Usage
 
