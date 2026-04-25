@@ -1,0 +1,2 @@
+#!/bin/bash
+lua ~/.local/bin/ungit.lua $* --action --recurse

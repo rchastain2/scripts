@@ -1,0 +1,3 @@
+EXE=~/Applications/mseide-maint-2603280822/apps/ide/mseide
+FONT=JuliaMono
+$EXE --globstatfile=$MSEIDE.sta --FONTALIAS=mseide_source,$FONT,18 $*
