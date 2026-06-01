@@ -3,8 +3,8 @@
 
 -- Choix du thème et de la police pour la version GUI de Textadept.
 
-if not CURSES then
-  if os.getenv('USERNAME') then
+if UI ~= 'terminal' then
+  if OS == 'windows' then
     view:set_theme('base16-cupertino', {font = 'Courier', size = 12})
   else
     view:set_theme('base16-cupertino', {font = 'SourceCodePro', size = 12})
@@ -36,8 +36,11 @@ textadept.run.compile_commands.bas = 'fbc "%f"'
 
 lexer.detect_extensions.bi = 'vb'
 
+lexer.detect_extensions.inc = 'pascal'
 lexer.detect_extensions.lpr = 'pascal'
 lexer.detect_extensions.pp = 'pascal'
+
+lexer.detect_extensions.win = 'makefile'
 
 -- https://github.com/orbitalquark/textadept/issues/626#issuecomment-3148499592
 
@@ -116,13 +119,6 @@ textadept.menu.menubar['Search/Find'][2] = find_sel_text
 keys['ctrl+f'] = find_sel_text
 
 -- https://github.com/orbitalquark/textadept/issues/603
-
--- =============================================================================
-
--- Update Notifier
--- https://github.com/orbitalquark/textadept-update-notifier
-
-local update_notifier = require('update_notifier')
 
 -- =============================================================================
 
