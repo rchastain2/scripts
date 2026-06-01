@@ -1,5 +1,6 @@
 
-# Script pour télécharger, compiler et installer l'éditeur de texte [Textadept](https://github.com/orbitalquark/textadept) sous Linux
+# Installe Textadept sous Linux
+# Exemple d'utilisation : sh install-textadept.sh -d ~/Applications
 
 check_command_availability()
 {
@@ -83,17 +84,18 @@ create_link()
 copy_desktop_files()
 {
   echo "[INFO] Copy .desktop files"
+  sed -i "s|Icon=textadept|Icon=$SHARE/core/images/textadept.svg|g" $SHARE/textadept.desktop
+  chmod -R 777 $SHARE/textadept.desktop
+  cp -f $SHARE/textadept.desktop ~/Desktop
   mkdir -p ~/.local/share/applications/
   cp -f $SHARE/textadept.desktop ~/.local/share/applications/
-  cp -f $SHARE/textadept.desktop ~/Desktop
-  chmod -R 777 ~/Desktop/textadept.desktop
 }
 
 copy_svg_icon()
 {
   echo "[INFO] Copy SVG icon"
   if [ -d "$SVGDIR" ]; then
-    cp -f $SHARE/core/images/textadept.svg "$SVGDIR"
+    cp -fv $SHARE/core/images/textadept.svg "$SVGDIR"
   else
     echo "[WARNING] $SVGDIR does not exist."
   fi
@@ -103,8 +105,8 @@ copy_png_icon()
 {
   echo "[INFO] Copy PNG icon"
   mkdir -p $PNGDIR
-  ##cp -f $SHARE/core/images/textadept.png $PNGDIR
-  cp -f $SHARE/core/images/textadept.ico $PNGDIR
+  #cp -fv $SHARE/core/images/textadept.png $PNGDIR
+  cp -fv $SHARE/core/images/textadept.ico $PNGDIR
 }
 
 echo "Textadept Bash installer"
@@ -127,5 +129,5 @@ download
 build
 create_link
 copy_desktop_files
-copy_svg_icon
-copy_png_icon
+#copy_svg_icon
+#copy_png_icon
